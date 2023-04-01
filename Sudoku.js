@@ -1,46 +1,51 @@
 const tableroSudoku = document.querySelector('#sudoku')
 const cuadrados = 9
 
-function crearTablero(nombre, clase, tipo, min, max){
-    const inputElement = document.createElement(nombre)
-    inputElement.setAttribute('type', tipo)
-    inputElement.setAttribute('min', min)
-    inputElement.setAttribute('max', max)
-    inputElement.classList.add(clase)
-    tableroSudoku.appendChild(inputElement)
+
+function crearCuadro(nombre, clase, tipo, min, max){
+    const cuadrado = document.createElement(nombre)
+    cuadrado.setAttribute('type', tipo)
+    cuadrado.setAttribute('min', min)
+    cuadrado.setAttribute('max', max)
+    cuadrado.classList.add(clase)
+    tableroSudoku.appendChild(cuadrado)
 } 
 
-for (let i = 0; i < cuadrados; i++) {
-    for (let j = 0; j < 7; j++) {
-        crearTablero('input', 'cuadrado', 'number', 0, 9)
+function crearCuadroVacio(nombre){
+    const cuadrado = document.createElement(nombre)
+    cuadrado.disabled = true
+    tableroSudoku.appendChild(cuadrado)
+}
+
+function crear3x3(){
+    for (let i = 0; i < 9; i++) {
+        crearCuadro('input', 'cuadrado', 'number', 0, 9)
+          
     }
 
 }
 
-
-
-/*
-function cuadrado () {
-    for (let i = 0; i < cuadrados; i++) {
-        const inputElement = document.createElement('input')
-        inputElement.setAttribute('type', 'number')
-        inputElement.setAttribute('min', 0)
-        inputElement.setAttribute('max', 9)
-        tableroSudoku.appendChild(inputElement)    
-    }
+function vacio(){
+    for (let i = 0; i < 9; i++){
+        crearCuadroVacio('input', 'cuadrado', 'number', 0, 9)
+    }   
 }
 
 function crearTablero(){
-
     for (let i = 0; i < 7; i++) {
-        
-        cuadrado();  
-        
+        if (i == 3){
+            vacio();
+        }
+        else{
+            crear3x3()
+        }
     }
+     
 }
-*/
 
 crearTablero();
+
+
 
     /*
     //Cambia de color los cuadrados 3x3

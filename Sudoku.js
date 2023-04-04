@@ -1,16 +1,7 @@
-const cuadradoPequeño = document.querySelector('#cuadradoPequeño')
-const cuadradoGrande = document.querySelector('#cuadradoGrande')
+const tableroSudoku = document.querySelector('#sudoku')
 const cuadrados = 9
 
 
-function crearCuadro(nombre, clase, tipo, min, max){
-    const cuadrado = document.createElement(nombre)
-    cuadrado.setAttribute('type', tipo)
-    cuadrado.setAttribute('min', min)
-    cuadrado.setAttribute('max', max)
-    cuadrado.classList.add(clase)
-    tableroSudoku.appendChild(cuadrado)
-} 
 
 function crearCuadroVacio(nombre){
 
@@ -57,21 +48,23 @@ function crearCuadroVacio(nombre){
   }
  -----------------------------------------------------------------------------------------------*/
 
-function crear3x3() {
+function crear21x21() {
     const contenedor = document.createElement("div");
     contenedor.classList.add("fila");
   
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 441; i++) {
       const cuadrado = document.createElement("input");
-      cuadrado.setAttribute("type", "number");
+  
       cuadrado.setAttribute("min", 0);
       cuadrado.setAttribute("max", 9);
       cuadrado.classList.add("cuadrado");
-      cuadrado.id = "cuadrado-" + i;
+      //cuadrado.id = i;
       contenedor.appendChild(cuadrado);
+      cuadrado.setAttribute("value", i);
+      
   
       // Agregamos un salto de línea después de cada tercer cuadrado
-      if ((i + 1) % 3 === 0) {
+      if ((i + 1) % 21 === 0) {
         const saltoLinea = document.createElement("br");
         contenedor.appendChild(saltoLinea);
       }
@@ -113,6 +106,9 @@ function crearTablero(){
 
 
 function crearTablero() {
+
+    crear21x21()
+    /*
     const tablero = [];
   
     for (let i = 0; i < 9; i++) {
@@ -140,6 +136,7 @@ function crearTablero() {
     }
   
     return tablero;
+    */
   }
 
 const tablero = crearTablero()

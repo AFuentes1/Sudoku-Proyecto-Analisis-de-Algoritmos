@@ -26,6 +26,7 @@
     box-sizing: border-box;
     border-spacing: 0;
     border: 1px grey solid;
+    
 
 
 
@@ -51,11 +52,7 @@
     */
 }
 
-#sudoku vacio{
-    width: 50px;
-    height: 50px;
-    border: 1px white;
-}
+
 
 .odd-section {
     background-color: lightgrey;

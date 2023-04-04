@@ -1,4 +1,5 @@
-const tableroSudoku = document.querySelector('#sudoku')
+const cuadradoPequeño = document.querySelector('#cuadradoPequeño')
+const cuadradoGrande = document.querySelector('#cuadradoGrande')
 const cuadrados = 9
 
 

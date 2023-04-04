@@ -1,4 +1,5 @@
-const tableroSudoku = document.querySelector('#sudoku')
+const cuadradoPequeño = document.querySelector('#cuadradoPequeño')
+const cuadradoGrande = document.querySelector('#cuadradoGrande')
 const cuadrados = 9
 
 
@@ -8,13 +9,13 @@ function crearCuadro(nombre, clase, tipo, min, max){
     cuadrado.setAttribute('min', min)
     cuadrado.setAttribute('max', max)
     cuadrado.classList.add(clase)
-    tableroSudoku.appendChild(cuadrado)
+    cuadradoPequeño.appendChild(cuadrado)
 } 
 
 function crearCuadroVacio(nombre){
     const cuadrado = document.createElement(nombre)
     cuadrado.disabled = true
-    tableroSudoku.appendChild(cuadrado)
+    cuadradoPequeño.appendChild(cuadrado)
 }
 
 function crear3x3(){
@@ -31,19 +32,21 @@ function vacio(){
     }   
 }
 
-function crearTablero(){
+function crear7x7(){
     for (let i = 0; i < 7; i++) {
+        
         if (i == 3){
             vacio();
         }
         else{
             crear3x3()
-        }
+        }    
     }
-     
 }
 
-crearTablero();
+
+crear7x7()
+
 
 
 

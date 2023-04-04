@@ -1,6 +1,14 @@
 #sudoku {
-    width: 150px;
+    
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+
+    /*width: 150px;
     height: 150px;
+    /*
+
     /*
     margin: 0 auto;
     border: 1px solid black;
@@ -12,11 +20,22 @@
 }
 
 #sudoku input{
+   
     width: 50px;
     height: 50px;
     box-sizing: border-box;
     border-spacing: 0;
     border: 1px grey solid;
+   
+   
+   
+   /* width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border-spacing: 0;
+    border: 1px grey solid;
+    */
+
     /*
 
     font-size: 30px;
@@ -31,4 +50,5 @@
 .odd-section {
     background-color: lightgrey;
 }
+
 

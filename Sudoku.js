@@ -1,13 +1,14 @@
 const tableroSudoku = document.querySelector('#sudoku')
 const cuadrados = 9
+const contenedor = document.createElement("div");
 
 
+function crearCuadroVacio(vacio){
 
-function crearCuadroVacio(nombre){
-
-    const cuadrado = document.createElement(nombre)
+    const cuadrado = document.createElement(vacio)
     cuadrado.disabled = true
-    tableroSudoku.appendChild(cuadrado)
+    contenedor.appendChild(cuadrado)
+    
 
     /*
     const cuadrado = document.createElement(nombre)
@@ -49,19 +50,22 @@ function crearCuadroVacio(nombre){
  -----------------------------------------------------------------------------------------------*/
 
 function crear21x21() {
-    const contenedor = document.createElement("div");
+    
     contenedor.classList.add("fila");
   
     for (let i = 0; i < 441; i++) {
-      const cuadrado = document.createElement("input");
-  
-      cuadrado.setAttribute("min", 0);
-      cuadrado.setAttribute("max", 9);
-      cuadrado.classList.add("cuadrado");
-      //cuadrado.id = i;
-      contenedor.appendChild(cuadrado);
-      cuadrado.setAttribute("value", i);
-      
+
+      if (i >= 30 && i <= 32 || i >= 9 && i <= 11 || i >= 51 && i <= 53) {
+        crearCuadroVacio('vacio')
+      } else{
+        const cuadrado = document.createElement("input");
+        cuadrado.setAttribute("min", 0);
+        cuadrado.setAttribute("max", 9);
+        cuadrado.classList.add("cuadrado");
+        //cuadrado.id = i;
+        contenedor.appendChild(cuadrado);
+        cuadrado.setAttribute("value", i);
+      }
   
       // Agregamos un salto de línea después de cada tercer cuadrado
       if ((i + 1) % 21 === 0) {
@@ -178,4 +182,3 @@ function crearTablero(){
         
     }*/
     //Se agrega el input al tablero
-

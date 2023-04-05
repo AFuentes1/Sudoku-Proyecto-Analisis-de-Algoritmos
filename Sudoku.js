@@ -131,6 +131,9 @@ function crear21x21() {
     }
   
     tableroSudoku.appendChild(contenedor);
+    const Numeros =  obtenerNumerosTablero()
+    console.log(Numeros.toString());
+
     return contenedor;
   }
 
@@ -238,3 +241,17 @@ function crearTablero(){
         
     }*/
     //Se agrega el input al tablero
+
+function obtenerNumerosTablero() {
+      const inputs = document.querySelectorAll('#sudoku input');
+      const numeros = [];
+    
+      inputs.forEach(input => {
+        if (input.value !== '') {
+          numeros.push(parseInt(input.value, 10));
+        } 
+      });
+    
+      return numeros;
+    }
+    

@@ -4,9 +4,9 @@ const contenedor = document.createElement("div");
 
 
 
-function crearCuadroVacio(vacio){
+function crearCuadroVacio(input, i){
 
-    const cuadrado = document.createElement(vacio)
+    const cuadrado = document.createElement(input)
     cuadrado.disabled = true
     contenedor.appendChild(cuadrado)
     
@@ -16,6 +16,16 @@ function crearCuadroVacio(vacio){
     cuadrado.disabled = true
     tableroSudoku.appendChild(cuadrado)
     */
+}
+
+function crearCuadro(input, i){
+  const cuadrado = document.createElement(input);
+  cuadrado.setAttribute("min", 0);
+  cuadrado.setAttribute("max", 9);
+  cuadrado.classList.add("cuadrado");
+  //cuadrado.id = i;
+  contenedor.appendChild(cuadrado);
+  cuadrado.setAttribute("value", i);
 }
 
 /*function crear3x3(){
@@ -57,15 +67,9 @@ function crear21x21() {
     for (let i = 0; i < 441; i++) {
 
       if (i >= 30 && i <= 32 || i >= 9 && i <= 11 || i >= 51 && i <= 53 || i >= 72 && i <= 74 || i >= 93 && i <= 95 || i >= 114 && i <= 116 || i >= 189 && i <= 194 || i >= 189 && i <= 194 || i >= 210 && i <= 215 || i >= 231 && i <= 236 || i >= 204 && i <= 209 || i >= 225 && i <= 230 || i >= 246 && i <= 251 || i >= 324 && i <= 326 || i >= 345 && i <= 347 || i >= 366 && i <= 368 || i >= 387 && i <= 389 || i >= 408 && i <= 410 || i >= 429 && i <= 431) {
-        crearCuadroVacio('input')
+        crearCuadroVacio('input', i)
       } else{
-        const cuadrado = document.createElement("input");
-        cuadrado.setAttribute("min", 0);
-        cuadrado.setAttribute("max", 9);
-        cuadrado.classList.add("cuadrado");
-        //cuadrado.id = i;
-        contenedor.appendChild(cuadrado);
-        cuadrado.setAttribute("value", i);
+        crearCuadro('input', i)
       }
   
       // Agregamos un salto de línea después de cada tercer cuadrado

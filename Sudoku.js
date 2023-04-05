@@ -19,13 +19,42 @@ function crearCuadroVacio(input, i){
 }
 
 function crearCuadro(input, i){
-  const cuadrado = document.createElement(input);
-  cuadrado.setAttribute("min", 0);
-  cuadrado.setAttribute("max", 9);
-  cuadrado.classList.add("cuadrado");
-  //cuadrado.id = i;
-  contenedor.appendChild(cuadrado);
-  cuadrado.setAttribute("value", i);
+
+    if(i >= 0 && i <= 2 || i >= 6 && i <= 8  || +
+        i >= 21 && i <= 23 || i >= 27 && i <= 29 || +
+        i >= 42 && i <= 44 || i >= 48 && i <= 50 || +
+        i >= 66 && i <= 68 || i >= 87 && i <= 89 || i >= 108 && i <= 110 || +
+        i >= 126 && i <= 128 || i >= 147 && i <= 149 || i >= 168 && i <= 170){ 
+      const cuadrado = document.createElement(input);
+      cuadrado.setAttribute("min", 0);
+      cuadrado.setAttribute("max", 9);
+      cuadrado.classList.add("cuadradoMezcla");
+      //cuadrado.id = i;
+      contenedor.appendChild(cuadrado);
+      cuadrado.setAttribute("value", i);
+    }else if(i >= 132 && i <= 134 || i >= 138 && i <= 140  || +
+        i >= 153 && i <= 155 || i >= 159 && i <= 161 || +
+        i >= 174 && i <= 176 || i >= 180 && i <= 182 || +
+        i >= 258 && i <= 260 || i >= 264 && i <= 266 || +
+        i >= 279 && i <= 281 || i >= 285 && i <= 287 || +
+        i >= 300 && i <= 302 || i >= 306 && i <= 308)
+    { 
+        const cuadrado = document.createElement(input);
+        cuadrado.setAttribute("min", 0);
+        cuadrado.setAttribute("max", 9);
+        cuadrado.classList.add("cuadradoInterno");
+        //cuadrado.id = i;
+        contenedor.appendChild(cuadrado);
+        cuadrado.setAttribute("value", i);
+    }else{
+        const cuadrado = document.createElement(input);
+        cuadrado.setAttribute("min", 0);
+        cuadrado.setAttribute("max", 9);
+        cuadrado.classList.add("cuadrado");
+        //cuadrado.id = i;
+        contenedor.appendChild(cuadrado);
+        cuadrado.setAttribute("value", i);
+    }
 }
 
 /*function crear3x3(){

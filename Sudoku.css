@@ -52,4 +52,8 @@
 .cuadradoMezcla{
     background-color: #c9f3ff;
 }
+.cuadradoVacio{
+    border: 1px purple; 
+}
+
 

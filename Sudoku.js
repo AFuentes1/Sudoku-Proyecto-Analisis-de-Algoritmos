@@ -9,6 +9,7 @@ function crearCuadroVacio(input, i){
     const cuadrado = document.createElement(input)
     cuadrado.disabled = true
     contenedor.appendChild(cuadrado)
+    cuadrado.classList.add("cuadradoVacio");
     
 
     /*

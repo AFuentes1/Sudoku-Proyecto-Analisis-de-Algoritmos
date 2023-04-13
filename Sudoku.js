@@ -40,7 +40,10 @@ function crearCuadro(input, i){
       const listasudoku = convertirLista(sudoku)
       console.log(listasudoku)
       // Llamamos a la función para setear los valores al tablero
-      setearValores(convertirLista(resolverSudoku(listasudoku)));
+      const listav =eliminarNoNumeros(lista)
+      console.log("Lista verificada"+listav)
+      console.log("Tamaño"+listav.length)
+      setearValores(listav);
    
 
       
@@ -325,71 +328,6 @@ function convertirLista(matriz){
 } 
 
 
-/*
-// Función para verificar si un número es válido para una posición específica en el sudoku
-function esValido(sudoku, fila, columna, numero) {
-  // Verificar fila
-  for (let i = 0; i < sudoku.length; i++) {
-    if (sudoku[fila][i] === numero) {
-      return false;
-    }
-  }
-
-  // Verificar columna
-  for (let i = 0; i < sudoku.length; i++) {
-    if (sudoku[i][columna] === numero) {
-      return false;
-    }
-  }
-
-  // Verificar sub-cuadrícula
-  const filaInicio = Math.floor(fila / 3) * 3;
-  const columnaInicio = Math.floor(columna / 3) * 3;
-  for (let i = filaInicio; i < filaInicio + 3; i++) {
-    for (let j = columnaInicio; j < columnaInicio + 3; j++) {
-      if (sudoku[i][j] === numero) {
-        return false;
-      }
-    }
-  }
-
-  // El número es válido
-  return true;
-}
-*/
-
-/*
-function resolverSudoku(sudoku) {
-  // Encontrar la próxima posición vacía en el sudoku
-  for (let fila = 0; fila < sudoku.length; fila++) {
-    for (let columna = 0; columna < sudoku.length; columna++) {
-      if (sudoku[fila][columna] === 0) {
-        // Probar todos los números posibles en la posición vacía
-        for (let numero = 1; numero <= 9; numero++) {
-          if (esValido(sudoku, fila, columna, numero)) {
-            // Asignar el número a la posición vacía
-            sudoku[fila][columna] = numero;
-
-            // Llamar recursivamente a la función para continuar con la siguiente posición vacía
-            if (resolverSudoku(sudoku)) {
-              return sudoku;  // Se encontró una solución válida
-            }
-
-            // Si no se encontró una solución válida, deshacer la asignación del número
-            sudoku[fila][columna] = 0;
-          }
-        }
-
-        // No hay números válidos para esta posición vacía
-        return false;
-      }
-    }
-  }
-
-  // Se completó todo el sudoku sin encontrar conflictos, se encontró una solución válida
-  return sudoku;
-}
-*/
 
 // Función para verificar si un número es válido para una posición específica en el sudoku
 function esValido(sudoku, fila, columna, numero) {
@@ -486,7 +424,7 @@ console.log(sudokuAleatorio);
 
 
 
-
+/*
 function setearValores(lista) {
   // Obtener los cuadrados vacíos
   const cuadradosVacios = document.querySelectorAll('.cuadradoVacio');
@@ -499,8 +437,43 @@ function setearValores(lista) {
   }
 }
 
+*/
+function eliminarNoNumeros(lista) {
+  return lista.filter((elemento) => typeof elemento === 'number');
+}
 
+/*
+function setearValores(valores) {
+  const cuadrados = Array.from(contenedor.children);
+  const cuadradosNoVacios = cuadrados.filter(cuadrado => !cuadrado.classList.contains("cuadradoVacio"));
 
+  cuadradosNoVacios.forEach((cuadrado, indice) => {
+    cuadrado.value = valores[indice];
+  });
+}
+*/
 
+/*----------
+function setearValores(valores) {
+  const cuadrados = Array.from(contenedor.children);
+  //const cuadradosNoVacios = cuadrados.filter(cuadrado => !cuadrado.classList.contains("cuadradoVacio"));
 
+  cuadrados.forEach((cuadrado, indice) => {
+    const valor = valores[indice] === 0 ? '' : valores[indice]; // Si el valor es 0, setear un valor vacío
+    cuadrado.value = valor;
+    console.log("indice"+indice+" El input:"+valor)
+  });
+  
+
+}
+*/
+function setearValores(valores) {
+  const cuadrados = Array.from(contenedor.children).filter(cuadrado => cuadrado.value !== undefined);
+
+  cuadrados.forEach((cuadrado, indice) => {
+    const valor = valores[indice] === 0 ? '' : valores[indice]; // Si el valor es 0, setear un valor vacío
+    cuadrado.value = valor;
+    console.log("indice"+indice+" El input:"+valor)
+  });
+}
 

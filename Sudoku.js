@@ -145,6 +145,7 @@ function crear21x21() {
   
     tableroSudoku.appendChild(contenedor);
     const lista =  ActualizarLista()
+    /*
     cuadrante1(lista)
     cuadrante2(lista)
     cuadrante3(lista)
@@ -154,7 +155,13 @@ function crear21x21() {
     cuadrante7(lista)
     cuadrante8(lista)
     cuadrante9(lista)
-
+    */
+  
+    const listaG1 = cuadranteG1(lista)
+    const matriz1 = convertirMatriz(listaG1)
+    console.log(resolverSudoku(matriz1));
+    const sudoku = resolverSudoku(matriz1)
+    imprimirSudoku(sudoku)
     
 
    
@@ -420,3 +427,104 @@ function cuadrante9(lista){
   console.log(listaCuadrante)
   return listaCuadrante
 }
+
+
+
+function cuadranteG1(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 0 && i <= 8 || i >= 21 && i <= 29 || i >= 42 && i <= 50 ||
+        i >= 63 && i <= 71 || i >= 84 && i <= 92 || i >= 105 && i <= 113 ||
+        i >= 126 && i <= 134 || i >= 147 && i <= 155 || i >= 168 && i <= 176){
+        listaCuadrante.push(lista[i])
+        
+      }
+  }
+
+  return listaCuadrante
+
+}
+
+
+function convertirMatriz(lista) {
+  var matriz = [];
+
+  for (var i = 0; i < 9; i++) {
+    matriz[i] = lista.slice(i * 9, (i + 1) * 9);
+  }
+  console.log(matriz)
+  return matriz;
+}
+
+
+
+
+// Función para verificar si un número es válido para una posición específica en el sudoku
+function esValido(sudoku, fila, columna, numero) {
+  // Verificar fila
+  for (let i = 0; i < sudoku.length; i++) {
+    if (sudoku[fila][i] === numero) {
+      return false;
+    }
+  }
+
+  // Verificar columna
+  for (let i = 0; i < sudoku.length; i++) {
+    if (sudoku[i][columna] === numero) {
+      return false;
+    }
+  }
+
+  // Verificar sub-cuadrícula
+  const filaInicio = Math.floor(fila / 3) * 3;
+  const columnaInicio = Math.floor(columna / 3) * 3;
+  for (let i = filaInicio; i < filaInicio + 3; i++) {
+    for (let j = columnaInicio; j < columnaInicio + 3; j++) {
+      if (sudoku[i][j] === numero) {
+        return false;
+      }
+    }
+  }
+
+  // El número es válido
+  return true;
+}
+
+function resolverSudoku(sudoku) {
+  // Encontrar la próxima posición vacía en el sudoku
+  for (let fila = 0; fila < sudoku.length; fila++) {
+    for (let columna = 0; columna < sudoku.length; columna++) {
+      if (sudoku[fila][columna] === 0) {
+        // Probar todos los números posibles en la posición vacía
+        for (let numero = 1; numero <= 9; numero++) {
+          if (esValido(sudoku, fila, columna, numero)) {
+            // Asignar el número a la posición vacía
+            sudoku[fila][columna] = numero;
+
+            // Llamar recursivamente a la función para continuar con la siguiente posición vacía
+            if (resolverSudoku(sudoku)) {
+              return sudoku;  // Se encontró una solución válida
+            }
+
+            // Si no se encontró una solución válida, deshacer la asignación del número
+            sudoku[fila][columna] = 0;
+          }
+        }
+
+        // No hay números válidos para esta posición vacía
+        return false;
+      }
+    }
+  }
+
+  // Se completó todo el sudoku sin encontrar conflictos, se encontró una solución válida
+  return sudoku;
+}
+
+function imprimirSudoku(sudoku) {
+  for (let i = 0; i < sudoku.length; i++) {
+    
+
+  }
+}
+

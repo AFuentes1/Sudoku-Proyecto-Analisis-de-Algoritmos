@@ -6,7 +6,7 @@ const contenedor = document.createElement("div");
 
 function crearCuadroVacio(input, i){
 
-    const cuadrado = document.createElement(input)
+    const cuadrado = document.createElement(input) 
     cuadrado.disabled = true
     contenedor.appendChild(cuadrado)
     cuadrado.classList.add("cuadradoVacio");
@@ -20,6 +20,21 @@ function crearCuadroVacio(input, i){
 }
 
 function crearCuadro(input, i){
+    //Se dividen en tipos de cuadrados, interno, cuadrado normal y mezcla, para los colores
+    const cuadrado = document.createElement(input);
+    cuadrado.setAttribute("value", i);
+    contenedor.appendChild(cuadrado);
+    cuadrado.maxlength = 1;
+
+    cuadrado.addEventListener('input', function () {
+      const numero = this.value;
+      if (numero && (isNaN(numero) ||  numero < 1 || numero > 9)) {
+        // Si el valor no es un número del 1 al 9, borra el contenido del input
+        this.value = '';
+      }
+      ActualizarLista()
+      
+    }) 
 
     if(i >= 0 && i <= 2 || i >= 6 && i <= 8  || +
         i >= 21 && i <= 23 || i >= 27 && i <= 29 || +
@@ -47,13 +62,9 @@ function crearCuadro(input, i){
 
         +
         i >= 198 && i <= 200 || i >= 219 && i <= 221 || i >= 240 && i <= 242){ 
-      const cuadrado = document.createElement(input);
-      cuadrado.setAttribute("min", 0);
-      cuadrado.setAttribute("max", 9);
+      
       cuadrado.classList.add("cuadradoMezcla");
-      //cuadrado.id = i;
-      contenedor.appendChild(cuadrado);
-      cuadrado.setAttribute("value", i);
+      //cuadrado.id = i;  
     }else if(i >= 132 && i <= 134 || i >= 138 && i <= 140  || +
         i >= 153 && i <= 155 || i >= 159 && i <= 161 || +
         i >= 174 && i <= 176 || i >= 180 && i <= 182 || +
@@ -61,21 +72,12 @@ function crearCuadro(input, i){
         i >= 279 && i <= 281 || i >= 285 && i <= 287 || +
         i >= 300 && i <= 302 || i >= 306 && i <= 308)
     { 
-        const cuadrado = document.createElement(input);
-        cuadrado.setAttribute("min", 0);
-        cuadrado.setAttribute("max", 9);
         cuadrado.classList.add("cuadradoInterno");
-        //cuadrado.id = i;
-        contenedor.appendChild(cuadrado);
-        cuadrado.setAttribute("value", i);
+        //cuadrado.id = i; 
     }else{
-        const cuadrado = document.createElement(input);
-        cuadrado.setAttribute("min", 0);
-        cuadrado.setAttribute("max", 9);
         cuadrado.classList.add("cuadrado");
         //cuadrado.id = i;
-        contenedor.appendChild(cuadrado);
-        cuadrado.setAttribute("value", i);
+        
     }
 }
 
@@ -131,8 +133,8 @@ function crear21x21() {
     }
   
     tableroSudoku.appendChild(contenedor);
-    const Numeros =  obtenerNumerosTablero()
-    console.log(Numeros.toString());
+    const Numeros =  ActualizarLista()
+   
 
     return contenedor;
   }
@@ -242,16 +244,19 @@ function crearTablero(){
     }*/
     //Se agrega el input al tablero
 
-function obtenerNumerosTablero() {
+function ActualizarLista() {
       const inputs = document.querySelectorAll('#sudoku input');
       const numeros = [];
     
       inputs.forEach(input => {
         if (input.value !== '') {
-          numeros.push(parseInt(input.value, 10));
-        } 
+          numeros.push(parseInt(input.value, 10)); 
+        }else {
+          numeros.push(0);
+        }
+
       });
-    
+      console.log(numeros.toString());
       return numeros;
     }
     

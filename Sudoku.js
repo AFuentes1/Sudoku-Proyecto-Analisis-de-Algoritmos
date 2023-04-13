@@ -19,6 +19,8 @@ function crearCuadroVacio(input, i){
     */
 }
 
+
+
 function crearCuadro(input, i){
     //Se dividen en tipos de cuadrados, interno, cuadrado normal y mezcla, para los colores
     const cuadrado = document.createElement(input);
@@ -32,7 +34,10 @@ function crearCuadro(input, i){
         // Si el valor no es un número del 1 al 9, borra el contenido del input
         this.value = '';
       }
-      ActualizarLista()
+      
+      const lista = ActualizarLista()
+      
+
       
     }) 
 
@@ -119,7 +124,13 @@ function crear21x21() {
   
     for (let i = 0; i < 441; i++) {
 
-      if (i >= 30 && i <= 32 || i >= 9 && i <= 11 || i >= 51 && i <= 53 || i >= 72 && i <= 74 || i >= 93 && i <= 95 || i >= 114 && i <= 116 || i >= 189 && i <= 194 || i >= 189 && i <= 194 || i >= 210 && i <= 215 || i >= 231 && i <= 236 || i >= 204 && i <= 209 || i >= 225 && i <= 230 || i >= 246 && i <= 251 || i >= 324 && i <= 326 || i >= 345 && i <= 347 || i >= 366 && i <= 368 || i >= 387 && i <= 389 || i >= 408 && i <= 410 || i >= 429 && i <= 431) {
+      if (i >= 30 && i <= 32 || i >= 9 && i <= 11 || i >= 51 && i <= 53 || 
+        i >= 72 && i <= 74 || i >= 93 && i <= 95 || i >= 114 && i <= 116 || 
+        i >= 189 && i <= 194 || i >= 189 && i <= 194 || i >= 210 && i <= 215 || 
+        i >= 231 && i <= 236 || i >= 204 && i <= 209 || i >= 225 && i <= 230 || 
+        i >= 246 && i <= 251 || i >= 324 && i <= 326 || i >= 345 && i <= 347 || 
+        i >= 366 && i <= 368 || i >= 387 && i <= 389 || i >= 408 && i <= 410 || 
+        i >= 429 && i <= 431) {
         crearCuadroVacio('input', i)
       } else{
         crearCuadro('input', i)
@@ -133,7 +144,19 @@ function crear21x21() {
     }
   
     tableroSudoku.appendChild(contenedor);
-    const Numeros =  ActualizarLista()
+    const lista =  ActualizarLista()
+    cuadrante1(lista)
+    cuadrante2(lista)
+    cuadrante3(lista)
+    cuadrante4(lista)
+    cuadrante5(lista)
+    cuadrante6(lista)
+    cuadrante7(lista)
+    cuadrante8(lista)
+    cuadrante9(lista)
+
+    
+
    
 
     return contenedor;
@@ -259,4 +282,141 @@ function ActualizarLista() {
       console.log(numeros.toString());
       return numeros;
     }
-    
+
+function Comparar(lista){
+    const lista2 = lista
+    for (let i = 0; i < lista.length; i++) {
+        if (lista[i] == lista2[i]){
+            console.log('iguales')
+        }
+        else{
+            console.log('no iguales')
+        }
+    }
+}
+
+/*
+function cuadrante(lista){
+  let j = 0
+  let k = 0
+  const listaCuadrante = []
+  const lista2 = []
+  for (let i = 0; i <= 44; i++) {
+    if (j >= 0 && j <= 3){ 
+      listaCuadrante.push(lista[i])
+      j++
+      if (j == 3){
+        j = 4
+        k = 0
+      }
+    }
+    k++
+    if (k == 19){
+      j = 0
+      k = 0
+    }
+  }
+
+}
+*/
+
+function cuadrante1(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 0 && i <= 2 || i >= 21 && i <= 23 || i >= 42 && i <= 44){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}
+
+
+function cuadrante2(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 3 && i <= 5 || i >= 24 && i <= 26 || i >= 45 && i <= 47){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}
+
+function cuadrante3(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 6 && i <= 8 || i >= 27 && i <= 29 || i >= 48 && i <= 50){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}
+
+function cuadrante4(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 63 && i <= 65 || i >= 84 && i <= 86 || i >= 105 && i <= 107){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}
+
+function cuadrante5(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 66 && i <= 68 || i >= 87 && i <= 89 || i >= 108 && i <= 110){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}
+
+function cuadrante6(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 69 && i <= 71 || i >= 90 && i <= 92 || i >= 111 && i <= 113){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}
+
+function cuadrante7(lista){
+  const listaCuadrante = []
+  const lista2 = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 126 && i <= 128 || i >= 147 && i <= 149 || i >= 168 && i <= 170){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}
+
+function cuadrante8(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 129 && i <= 131 || i >= 150 && i <= 152 || i >= 171 && i <= 173){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}
+
+function cuadrante9(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++) {
+    if (i >= 132 && i <= 134 || i >= 153 && i <= 155 || i >= 174 && i <= 176){ 
+      listaCuadrante.push(lista[i])
+    }
+  }
+  console.log(listaCuadrante)
+  return listaCuadrante
+}

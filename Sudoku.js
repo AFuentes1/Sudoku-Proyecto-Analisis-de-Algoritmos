@@ -12,11 +12,7 @@ function crearCuadroVacio(input, i){
     cuadrado.classList.add("cuadradoVacio");
     
 
-    /*
-    const cuadrado = document.createElement(nombre)
-    cuadrado.disabled = true
-    tableroSudoku.appendChild(cuadrado)
-    */
+  
 }
 
 
@@ -24,7 +20,8 @@ function crearCuadroVacio(input, i){
 function crearCuadro(input, i){
     //Se dividen en tipos de cuadrados, interno, cuadrado normal y mezcla, para los colores
     const cuadrado = document.createElement(input);
-    cuadrado.setAttribute("value", i);
+    let randomNumber = Math.floor(Math.random() * 10);
+    cuadrado.setAttribute("value", '');
     contenedor.appendChild(cuadrado);
     cuadrado.maxlength = 1;
 
@@ -36,7 +33,15 @@ function crearCuadro(input, i){
       }
       
       const lista = ActualizarLista()
-      
+      const listaG1 = cuadranteG1(lista)
+      const matriz1 = convertirMatriz(listaG1)
+      //console.log(resolverSudoku(matriz1));
+      const sudoku = resolverSudoku(matriz1)
+      const listasudoku = convertirLista(sudoku)
+      console.log(listasudoku)
+      // Llamamos a la función para setear los valores al tablero
+      setearValores(convertirLista(resolverSudoku(listasudoku)));
+   
 
       
     }) 
@@ -86,37 +91,7 @@ function crearCuadro(input, i){
     }
 }
 
-/*function crear3x3(){
-    for (let i = 0; i < 9; i++) {
-        crearCuadro('input', 'cuadrado', 'number', 0, 9)
-          
-    }
 
-}*/
-/*-------------------------------------------------------------------------------------------*/
-/*function crear3x3() {
-    const contenedor = document.createElement("div");
-    contenedor.classList.add("fila");
-  
-    for (let i = 0; i < 27; i++) {
-      const cuadrado = document.createElement("input");
-      cuadrado.setAttribute("type", "number");
-      cuadrado.setAttribute("min", 0);
-      cuadrado.setAttribute("max", 9);
-      cuadrado.classList.add("cuadrado");
-      cuadrado.id = "cuadrado-" + i;
-      contenedor.appendChild(cuadrado);
-  
-      // Agregamos un salto de línea después de cada tercer cuadrado
-      if ((i + 1) % 3 === 0) {
-        const saltoLinea = document.createElement("br");
-        contenedor.appendChild(saltoLinea);
-      }
-    }
-  
-    tableroSudoku.appendChild(contenedor);
-  }
- -----------------------------------------------------------------------------------------------*/
 
 function crear21x21() {
     
@@ -145,23 +120,9 @@ function crear21x21() {
   
     tableroSudoku.appendChild(contenedor);
     const lista =  ActualizarLista()
-    /*
-    cuadrante1(lista)
-    cuadrante2(lista)
-    cuadrante3(lista)
-    cuadrante4(lista)
-    cuadrante5(lista)
-    cuadrante6(lista)
-    cuadrante7(lista)
-    cuadrante8(lista)
-    cuadrante9(lista)
-    */
+   
   
-    const listaG1 = cuadranteG1(lista)
-    const matriz1 = convertirMatriz(listaG1)
-    console.log(resolverSudoku(matriz1));
-    const sudoku = resolverSudoku(matriz1)
-    imprimirSudoku(sudoku)
+    
     
 
    
@@ -176,103 +137,22 @@ function vacio(){
     }   
 }
 
-/*
-function crearTablero(){
-    const tablero = [];
 
-    for (let i = 0; i < 2; i++) {
-        const fila = [];
-
-        if (i == 3){
-            vacio();
-        }
-        else{
-            // Crear el objeto y guardarlo en la matriz
-            fila.push(crear3x3());
-            tablero.push(f)
-           
-    }
-        return tablero
-    }
-    
-    
-}
-*/
 
 
 function crearTablero() {
 
     crear21x21()
-    /*
-    const tablero = [];
-  
-    for (let i = 0; i < 9; i++) {
-      const fila = [];
-  
-      for (let j = 0; j < 9; j++) {
-        if (j % 3 === 0) {
-          // Si j es múltiplo de 3, crea una nueva sección
-          const seccion = crear3x3();
-          fila.push(seccion);
-          tablero.push(seccion);
-        } else {
-          // Si no, agrega el cuadrado a la última sección
-          const seccion = crear3x3();
-          
-          fila[fila.length - 1].appendChild(seccion);
-        }
-      }
-  
-      // Agrega un salto de línea después de cada 3 filas
-      if ((i + 1)  === 7) {
-        const saltoLinea = document.createElement("br");
-        tableroSudoku.appendChild(saltoLinea);
-      }
-    }
-  
-    return tablero;
-    */
+    
   }
 
 const tablero = crearTablero()
     console.log(tablero)
-/*
-function crearTablero(){
-
-    crear3x3()
-    
-    /*for (let i = 0; i < 7; i++) {
-        if (i == 3){
-            vacio();
-        }
-        else{
-            crear3x3()
-        }
-    }
-    
-*/
-     
 
 
 
 
-/*crearTablero();
 
-
-
-    /*
-    //Cambia de color los cuadrados 3x3
-    if (
-        ((i % 9 == 0 || i % 9 == 1 || i % 9 == 2) && i < 21)||   //Se agregan los bordes del tablero
-        ((i % 9 == 6 || i % 9 == 7 || i % 9 == 8) && i < 27) ||
-        ((i % 9 == 3 || i % 9 == 4 || i % 9 == 5) && i > 27 && i < 53) ||
-        ((i % 9 == 0 || i % 9 == 1 || i % 9 == 2) && i > 53) ||
-        ((i % 9 == 6 || i % 9 == 7 || i % 9 == 8) && i > 53) 
-    ){
-        inputElement.classList.add('odd-section')
-        
-    }*/
-    //Se agrega el input al tablero
 
 function ActualizarLista() {
       const inputs = document.querySelectorAll('#sudoku input');
@@ -302,30 +182,7 @@ function Comparar(lista){
     }
 }
 
-/*
-function cuadrante(lista){
-  let j = 0
-  let k = 0
-  const listaCuadrante = []
-  const lista2 = []
-  for (let i = 0; i <= 44; i++) {
-    if (j >= 0 && j <= 3){ 
-      listaCuadrante.push(lista[i])
-      j++
-      if (j == 3){
-        j = 4
-        k = 0
-      }
-    }
-    k++
-    if (k == 19){
-      j = 0
-      k = 0
-    }
-  }
 
-}
-*/
 
 function cuadrante1(lista){
   const listaCuadrante = []
@@ -456,8 +313,83 @@ function convertirMatriz(lista) {
   return matriz;
 }
 
+function convertirLista(matriz){
+  const lista = [];
+  console.log(matriz)
+  for (let i = 0; i < matriz.length; i++) {
+    for (let j = 0; j < matriz[i].length; j++) {
+      lista.push(matriz[i][j]);
+    }
+  }
+  return lista;
+} 
 
 
+/*
+// Función para verificar si un número es válido para una posición específica en el sudoku
+function esValido(sudoku, fila, columna, numero) {
+  // Verificar fila
+  for (let i = 0; i < sudoku.length; i++) {
+    if (sudoku[fila][i] === numero) {
+      return false;
+    }
+  }
+
+  // Verificar columna
+  for (let i = 0; i < sudoku.length; i++) {
+    if (sudoku[i][columna] === numero) {
+      return false;
+    }
+  }
+
+  // Verificar sub-cuadrícula
+  const filaInicio = Math.floor(fila / 3) * 3;
+  const columnaInicio = Math.floor(columna / 3) * 3;
+  for (let i = filaInicio; i < filaInicio + 3; i++) {
+    for (let j = columnaInicio; j < columnaInicio + 3; j++) {
+      if (sudoku[i][j] === numero) {
+        return false;
+      }
+    }
+  }
+
+  // El número es válido
+  return true;
+}
+*/
+
+/*
+function resolverSudoku(sudoku) {
+  // Encontrar la próxima posición vacía en el sudoku
+  for (let fila = 0; fila < sudoku.length; fila++) {
+    for (let columna = 0; columna < sudoku.length; columna++) {
+      if (sudoku[fila][columna] === 0) {
+        // Probar todos los números posibles en la posición vacía
+        for (let numero = 1; numero <= 9; numero++) {
+          if (esValido(sudoku, fila, columna, numero)) {
+            // Asignar el número a la posición vacía
+            sudoku[fila][columna] = numero;
+
+            // Llamar recursivamente a la función para continuar con la siguiente posición vacía
+            if (resolverSudoku(sudoku)) {
+              return sudoku;  // Se encontró una solución válida
+            }
+
+            // Si no se encontró una solución válida, deshacer la asignación del número
+            sudoku[fila][columna] = 0;
+          }
+        }
+
+        // No hay números válidos para esta posición vacía
+        return false;
+      }
+    }
+  }
+
+  // Se completó todo el sudoku sin encontrar conflictos, se encontró una solución válida
+  return sudoku;
+}
+*/
 
 // Función para verificar si un número es válido para una posición específica en el sudoku
 function esValido(sudoku, fila, columna, numero) {
@@ -490,6 +422,7 @@ function esValido(sudoku, fila, columna, numero) {
   return true;
 }
 
+// Función recursiva para resolver el sudoku utilizando Backtracking
 function resolverSudoku(sudoku) {
   // Encontrar la próxima posición vacía en el sudoku
   for (let fila = 0; fila < sudoku.length; fila++) {
@@ -517,14 +450,57 @@ function resolverSudoku(sudoku) {
     }
   }
 
-  // Se completó todo el sudoku sin encontrar conflictos, se encontró una solución válida
+  // Se encontró una solución válida
   return sudoku;
 }
 
-function imprimirSudoku(sudoku) {
-  for (let i = 0; i < sudoku.length; i++) {
-    
+// Función para generar un sudoku aleatorio
+function generarSudokuAleatorio() {
+  // Crear una matriz de 9x9 con ceros
+  const sudoku = Array.from(Array(9), () => new Array(9).fill(0));
 
+  // Rellenar algunas posiciones con números aleatorios
+  for (let i = 0; i < 20; i++) {
+    const fila = Math.floor(Math.random() * 9);
+    const columna = Math.floor(Math.random() * 9);
+    const numero = Math.floor(Math.random() * 9) + 1;
+    if (esValido(sudoku, fila, columna, numero)) {
+      sudoku[fila][columna] = numero;
+    }
+  }
+
+  console.log(sudoku)
+
+  // Resolver el sudoku
+  resolverSudoku(sudoku);
+
+  // Devolver el sudoku generado
+  return sudoku;
+}
+
+// Generar un sudoku aleatorio y mostrarlo en la consola
+const sudokuAleatorio = generarSudokuAleatorio();
+console.log(sudokuAleatorio);
+
+
+
+
+
+
+function setearValores(lista) {
+  // Obtener los cuadrados vacíos
+  const cuadradosVacios = document.querySelectorAll('.cuadradoVacio');
+
+  // Recorrer la lista y asignar cada valor a su cuadrado correspondiente
+  for (let i = 0; i < lista.length; i++) {
+    cuadradosVacios[i].value = lista[i];
+    cuadradosVacios[i].classList.remove('cuadradoVacio');
+    cuadradosVacios[i].disabled = false;
   }
 }
+
+
+
+
+
 

@@ -26,26 +26,30 @@ function crearCuadro(input, i, ){
     let randomNumber = Math.floor(Math.random() * 10);
     contenedor.appendChild(cuadrado);
     cuadrado.maxlength = 1;
-
+    
     cuadrado.addEventListener('input', function () {
       const numero = this.value;
       if (numero && (isNaN(numero) ||  numero < 1 || numero > 9)) {
         // Si el valor no es un número del 1 al 9, borra el contenido del input
         this.value = '';
       }
-      console.log("Agarró todos los valores del tablero y los convirtio en lista")
+      //console.log("Agarró todos los valores del tablero y los convirtio en lista")
       const lista = ActualizarLista()
-      console.log("De la lista del tablero se agarró solo los valores de G1")
+      //console.log("De la lista del tablero se agarró solo los valores de G1")
       const listaG1 = cuadranteG1(lista)
-      console.log("Se convirtió en matriz ")
+      const listaG2 = cuadranteG2(lista)
+      const listaG3 = cuadranteG3(lista)
+      const listaG4 = cuadranteG4(lista)
+      const listaG5 = cuadranteG5(lista)
+      //console.log("Se convirtió en matriz ")
       const matriz1 = convertirMatriz(listaG1)
       
       //console.log(resolverSudoku(matriz1));
-      console.log("Se llama a resolver Sudoku con lo que hay en G1")
+      //console.log("Se llama a resolver Sudoku con lo que hay en G1")
       const sudoku = resolverSudoku(matriz1)
-      console.log("Lo convierte en lista nuevamente")
+      //console.log("Lo convierte en lista nuevamente")
       const listasudoku = convertirLista(sudoku)
-      console.log("Llamamos a la función para setear los valores al tablero")
+      //console.log("Llamamos a la función para setear los valores al tablero")
       const listav =eliminarNoNumeros(lista)
       //console.log("Lista verificada"+listav)
       //console.log("Tamaño"+listav.length)
@@ -322,6 +326,60 @@ function cuadranteG1(lista){
 
 }
 
+function cuadranteG2(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++){
+    if (i >= 12 && i <= 20 || i >= 33 && i <= 41 || i >= 54 && i <= 62 || 
+        i >= 75 && i <= 83 || i >= 96 && i <= 104 || i >= 117 && i <= 125 ||
+        i >= 138 && i <= 146 || i >= 159 && i <= 167 || i >= 180 && i <= 188){
+          listaCuadrante.push(lista[i])
+        }
+        
+  }
+  return listaCuadrante
+     
+}
+
+function cuadranteG3(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++){
+    if (i >= 132 && i <= 140|| i >= 153 && i <= 161 || i >= 174 && i <= 182 || 
+        i >= 195 && i <= 203 || i >= 216 && i <= 224 || i >= 237 && i <= 245 ||
+        i >= 258 && i <= 266 || i >= 279 && i <= 287 || i >= 300 && i <= 308){
+          listaCuadrante.push(lista[i])
+        }
+  }
+  return listaCuadrante
+}
+
+function cuadranteG4(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++){
+    if (i >= 252 && i <= 260 || i >= 273 && i <= 281 || i >= 294 && i <= 302 || 
+        i >= 315 && i <= 323 || i >= 336 && i <= 344 || i >= 357 && i <= 365 ||
+        i >= 378 && i <= 386 || i >= 399 && i <= 407 || i >= 420 && i <= 428){
+          listaCuadrante.push(lista[i])
+
+        }
+      }
+  return listaCuadrante
+}
+
+function cuadranteG5(lista){
+  const listaCuadrante = []
+  for (let i = 0; i <= lista.length; i++){
+    if (i >= 264 && i <= 272 || i >= 285 && i <= 293 || i >= 306 && i <= 314 ||
+        i >= 327 && i <= 335 || i >= 348 && i <= 356 || i >= 369 && i <= 377 ||
+        i >= 390 && i <= 398 || i >= 411 && i <= 419 || i >= 432 && i <= 440){
+          listaCuadrante.push(lista[i])
+        }
+      }
+  return listaCuadrante
+}
+
+
+
+
 
 
 
@@ -533,5 +591,3 @@ function setearValores(valores) {
  
 
 }
-
-

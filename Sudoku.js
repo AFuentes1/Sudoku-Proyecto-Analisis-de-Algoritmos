@@ -4,8 +4,8 @@ const contenedor = document.createElement("div");
 
 
 
-function crearCuadroVacio(input, i){
 
+function crearCuadroVacio(input, i){
     const cuadrado = document.createElement(input) 
     cuadrado.disabled = true
     contenedor.appendChild(cuadrado)
@@ -17,11 +17,13 @@ function crearCuadroVacio(input, i){
 
 
 
-function crearCuadro(input, i){
+function crearCuadro(input, i, ){
     //Se dividen en tipos de cuadrados, interno, cuadrado normal y mezcla, para los colores
+    const nombre = i 
+    
     const cuadrado = document.createElement(input);
-    let randomNumber = Math.floor(Math.random() * 10);
     cuadrado.setAttribute("value", '');
+    let randomNumber = Math.floor(Math.random() * 10);
     contenedor.appendChild(cuadrado);
     cuadrado.maxlength = 1;
 
@@ -38,12 +40,12 @@ function crearCuadro(input, i){
       //console.log(resolverSudoku(matriz1));
       const sudoku = resolverSudoku(matriz1)
       const listasudoku = convertirLista(sudoku)
-      console.log(listasudoku)
       // Llamamos a la función para setear los valores al tablero
       const listav =eliminarNoNumeros(lista)
       console.log("Lista verificada"+listav)
       console.log("Tamaño"+listav.length)
       setearValores(listav);
+      Solucionar(listav)
    
 
       
@@ -94,14 +96,21 @@ function crearCuadro(input, i){
     }
 }
 
-
+function mostrarFila(input){
+  
+    contenedor.classList.add("fila");
+    for (let i = 0; i < 81; i++) {
+        
+    }
+    console.log("Fila");
+}
 
 function crear21x21() {
     
     contenedor.classList.add("fila");
   
     for (let i = 0; i < 441; i++) {
-
+      
       if (i >= 30 && i <= 32 || i >= 9 && i <= 11 || i >= 51 && i <= 53 || 
         i >= 72 && i <= 74 || i >= 93 && i <= 95 || i >= 114 && i <= 116 || 
         i >= 189 && i <= 194 || i >= 189 && i <= 194 || i >= 210 && i <= 215 || 
@@ -170,6 +179,7 @@ function ActualizarLista() {
 
       });
       console.log(numeros.toString());
+
       return numeros;
     }
 
@@ -409,6 +419,7 @@ function generarSudokuAleatorio() {
 
   console.log(sudoku)
 
+
   // Resolver el sudoku
   resolverSudoku(sudoku);
 
@@ -423,6 +434,28 @@ console.log(sudokuAleatorio);
 
 
 
+function Solucionar(listav){
+  
+  const cuadrados = Array.from(contenedor.children).filter(cuadrado => cuadrado.value !== undefined);
+
+  cuadrados.forEach((cuadrado, indice) => {
+    const valor = listav[indice] === 0 ? '' : listav[indice]; // Si el valor es 0, setear un valor vacío
+    cuadrado.value = valor;
+    console.log(valor)
+  });
+  /*
+  for (let i = 0; i < sudokuAleatorio.length; i++) {
+    for (let j = 0; j < sudokuAleatorio[i].length; j++) {
+     
+    }
+    /*
+    cuadrados.forEach((cuadrado, indice) => {
+    const valor = valores[indice] === 0 ? '' : valores[indice]; // Si el valor es 0, setear un valor vacío
+    cuadrado.value = valor;
+    
+  }
+ */
+}
 
 /*
 function setearValores(lista) {
@@ -475,5 +508,8 @@ function setearValores(valores) {
     cuadrado.value = valor;
     console.log("indice"+indice+" El input:"+valor)
   });
+ 
+
 }
+
 

@@ -33,19 +33,25 @@ function crearCuadro(input, i, ){
         // Si el valor no es un número del 1 al 9, borra el contenido del input
         this.value = '';
       }
-      
+      console.log("Agarró todos los valores del tablero y los convirtio en lista")
       const lista = ActualizarLista()
+      console.log("De la lista del tablero se agarró solo los valores de G1")
       const listaG1 = cuadranteG1(lista)
+      console.log("Se convirtió en matriz ")
       const matriz1 = convertirMatriz(listaG1)
+      
       //console.log(resolverSudoku(matriz1));
+      console.log("Se llama a resolver Sudoku con lo que hay en G1")
       const sudoku = resolverSudoku(matriz1)
+      console.log("Lo convierte en lista nuevamente")
       const listasudoku = convertirLista(sudoku)
-      // Llamamos a la función para setear los valores al tablero
+      console.log("Llamamos a la función para setear los valores al tablero")
       const listav =eliminarNoNumeros(lista)
-      console.log("Lista verificada"+listav)
-      console.log("Tamaño"+listav.length)
+      //console.log("Lista verificada"+listav)
+      //console.log("Tamaño"+listav.length)
       setearValores(listav);
-      Solucionar(listav)
+      //Solucionar(listav)
+      generarSudokuAleatorio()
    
 
       
@@ -310,30 +316,42 @@ function cuadranteG1(lista){
         
       }
   }
-
+  console.log("Lista Cuadricula G1")
+  console.log(listaCuadrante)
   return listaCuadrante
 
 }
 
 
+
+
 function convertirMatriz(lista) {
-  var matriz = [];
+
+  console.log("La lista que se recibio para convertir la matriz es:")
+  console.log(lista)
+  const matriz = [];
 
   for (var i = 0; i < 9; i++) {
+    
+    console.log(lista.slice(i * 9, (i + 1) * 9))
     matriz[i] = lista.slice(i * 9, (i + 1) * 9);
+    console.log(matriz[i])
+    
   }
+  console.log("Matriz: ")
   console.log(matriz)
   return matriz;
 }
 
 function convertirLista(matriz){
   const lista = [];
-  console.log(matriz)
+  //console.log(matriz)
   for (let i = 0; i < matriz.length; i++) {
     for (let j = 0; j < matriz[i].length; j++) {
       lista.push(matriz[i][j]);
     }
   }
+  console.log(lista)
   return lista;
 } 
 
@@ -399,6 +417,8 @@ function resolverSudoku(sudoku) {
   }
 
   // Se encontró una solución válida
+console.log("El sudoku resuelto es:")
+console.log(sudoku)
   return sudoku;
 }
 
@@ -422,14 +442,15 @@ function generarSudokuAleatorio() {
 
   // Resolver el sudoku
   resolverSudoku(sudoku);
-
+  console.log("Sudoku Aleatorio:")
+  console.log(sudoku)
   // Devolver el sudoku generado
   return sudoku;
 }
 
 // Generar un sudoku aleatorio y mostrarlo en la consola
-const sudokuAleatorio = generarSudokuAleatorio();
-console.log(sudokuAleatorio);
+//const sudokuAleatorio = generarSudokuAleatorio();
+//console.log(sudokuAleatorio);
 
 
 
@@ -501,12 +522,13 @@ function setearValores(valores) {
 }
 */
 function setearValores(valores) {
+  console.log(valores)
   const cuadrados = Array.from(contenedor.children).filter(cuadrado => cuadrado.value !== undefined);
 
   cuadrados.forEach((cuadrado, indice) => {
     const valor = valores[indice] === 0 ? '' : valores[indice]; // Si el valor es 0, setear un valor vacío
     cuadrado.value = valor;
-    console.log("indice"+indice+" El input:"+valor)
+    //console.log("indice"+indice+" El input:"+valor)
   });
  
 

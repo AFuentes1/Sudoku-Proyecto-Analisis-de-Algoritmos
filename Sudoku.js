@@ -308,14 +308,18 @@ function agregarCuadranteG1(listaG1,listanueva){
 function agregarCuadranteG2(listaG2,listanueva2){
   console.log("Lista g2:"+listaG2)
   var k=0
-  for (let i = 0; i <= listanueva2.length; i++){
-    (i >= 12 && i <= 20 || i >= 33 && i <= 41 || i >= 54 && i <= 62 || 
+  for (let i = 0; i <= listanueva2.length; i++) {
+    if (i >= 12 && i <= 20 || i >= 33 && i <= 41 || i >= 54 && i <= 62 || 
       i >= 75 && i <= 83 || i >= 96 && i <= 104 || i >= 117 && i <= 125 ||
-      i >= 138 && i <= 146 || i >= 159 && i <= 167 || i >= 180 && i <= 188)
+      i >= 138 && i <= 146 || i >= 159 && i <= 167 || i >= 180 && i <= 188){
+
       listanueva2[i]=listaG2[k]
       k = k+1
-
+    }
   }
+
+  console.log("Lista Principal Actualizada 2")
+  console.log(listanueva2)
   return listanueva2
 
 }
@@ -553,13 +557,18 @@ function Solucionar(){
       //console.log("Lista verificada"+listav)
       //console.log("Tamaño"+listav.length)
       const listaconG1= agregarCuadranteG1(listasudoku1,listaprincipal)
-
-      //const listaconG2 = agregarCuadranteG2(listasudoku2,listaprincipal)
+      const listaprincipal2 = listaconG1.slice();
+      console.log("Lista Principal 2")
+      console.log(listaprincipal2)
+      
+      const listaconG2 = agregarCuadranteG2(listasudoku2,listaprincipal2)
+      console.log("Lista con G2 ")
+      console.log(listaconG2)
       console.log("Lista con G1 ")
       console.log(listaconG1)
-      setearValores(listaconG1)
+      setearValores(listaconG2)
       //Solucionar(listav)
-      generarSudokuAleatorio()
+      //generarSudokuAleatorio()
   
   /*
   for (let i = 0; i < sudokuAleatorio.length; i++) {

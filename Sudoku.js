@@ -51,9 +51,13 @@ function crearCuadro(input, i, ){
       const listasudoku = convertirLista(sudoku)
       //console.log("Llamamos a la función para setear los valores al tablero")
       const listav =eliminarNoNumeros(lista)
+      const listaprincipal = listav.slice();
       //console.log("Lista verificada"+listav)
       //console.log("Tamaño"+listav.length)
-      setearValores(listav);
+      const listaconG1= AgregarcuadranteG1(listasudoku,listaprincipal)
+      console.log("Lista con G1 ")
+      console.log(listaconG1)
+      setearValores(listaconG1)
       //Solucionar(listav)
       generarSudokuAleatorio()
    
@@ -308,7 +312,23 @@ function cuadrante9(lista){
   return listaCuadrante
 }
 
+function AgregarcuadranteG1(listaG1,listanueva){
+  console.log("Lista g1:"+listaG1)
+  var k=0
+  for (let i = 0; i <= listanueva.length; i++) {
+    if (i >= 0 && i <= 8 || i >= 21 && i <= 29 || i >= 42 && i <= 50 ||
+        i >= 63 && i <= 71 || i >= 84 && i <= 92 || i >= 105 && i <= 113 ||
+        i >= 126 && i <= 134 || i >= 147 && i <= 155 || i >= 168 && i <= 176){
+        listanueva[i]=listaG1[k]
+        console.log("k:"+k)
+        k=k+1
+      }
+  }
+  console.log("Lista Principal Actualizada")
+  console.log(listanueva)
+  return listanueva
 
+}
 
 function cuadranteG1(lista){
   const listaCuadrante = []
@@ -409,6 +429,7 @@ function convertirLista(matriz){
       lista.push(matriz[i][j]);
     }
   }
+  console.log("Matriz convertida en lista")
   console.log(lista)
   return lista;
 } 

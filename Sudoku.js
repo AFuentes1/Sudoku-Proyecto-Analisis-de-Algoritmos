@@ -91,7 +91,7 @@ function mostrarFila(input){
     for (let i = 0; i < 81; i++) {
         
     }
-    console.log("Fila");
+    //console.log("Fila");
 }
 
 function crear21x21() {
@@ -148,7 +148,7 @@ function crearTablero() {
   }
 
 const tablero = crearTablero()
-    console.log(tablero)
+    //console.log(tablero)
 
 
 
@@ -167,7 +167,7 @@ function ActualizarLista() {
         }
 
       });
-      console.log(numeros.toString());
+      //console.log(numeros.toString());
 
       return numeros;
     }
@@ -176,10 +176,10 @@ function Comparar(lista){
     const lista2 = lista
     for (let i = 0; i < lista.length; i++) {
         if (lista[i] == lista2[i]){
-            console.log('iguales')
+            //console.log('iguales')
         }
         else{
-            console.log('no iguales')
+            //console.log('no iguales')
         }
     }
 }
@@ -193,7 +193,7 @@ function cuadrante1(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //console.log(listaCuadrante)
   return listaCuadrante
 }
 
@@ -205,7 +205,7 @@ function cuadrante2(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //console.log(listaCuadrante)
   return listaCuadrante
 }
 
@@ -216,7 +216,7 @@ function cuadrante3(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //console.log(listaCuadrante)
   return listaCuadrante
 }
 
@@ -227,7 +227,7 @@ function cuadrante4(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //.log(listaCuadrante)
   return listaCuadrante
 }
 
@@ -238,7 +238,7 @@ function cuadrante5(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //console.log(listaCuadrante)
   return listaCuadrante
 }
 
@@ -249,7 +249,7 @@ function cuadrante6(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //console.log(listaCuadrante)
   return listaCuadrante
 }
 
@@ -261,7 +261,7 @@ function cuadrante7(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //console.log(listaCuadrante)
   return listaCuadrante
 }
 
@@ -272,7 +272,7 @@ function cuadrante8(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //console.log(listaCuadrante)
   return listaCuadrante
 }
 
@@ -283,30 +283,30 @@ function cuadrante9(lista){
       listaCuadrante.push(lista[i])
     }
   }
-  console.log(listaCuadrante)
+  //console.log(listaCuadrante)
   return listaCuadrante
 }
 
 function agregarCuadranteG1(listaG1,listanueva){
-  console.log("Lista g1:"+listaG1)
+  //console.log("Lista g1:"+listaG1)
   var k=0
   for (let i = 0; i <= listanueva.length; i++) {
     if (i >= 0 && i <= 8 || i >= 21 && i <= 29 || i >= 42 && i <= 50 ||
         i >= 63 && i <= 71 || i >= 84 && i <= 92 || i >= 105 && i <= 113 ||
         i >= 126 && i <= 134 || i >= 147 && i <= 155 || i >= 168 && i <= 176){
         listanueva[i]=listaG1[k]
-        console.log("k:"+k)
+        //console.log("k:"+k)
         k=k+1
       }
   }
-  console.log("Lista Principal Actualizada")
-  console.log(listanueva)
+  //console.log("Lista Principal Actualizada")
+  //console.log(listanueva)
   return listanueva
 
 }
 
 function agregarCuadranteG2(listaG2,listanueva2){
-  console.log("Lista g2:"+listaG2)
+  //console.log("Lista g2:"+listaG2)
   var k=0
   for (let i = 0; i <= listanueva2.length; i++) {
     if (i >= 12 && i <= 20 || i >= 33 && i <= 41 || i >= 54 && i <= 62 || 
@@ -393,8 +393,8 @@ function cuadranteG1(lista){
         
       }
   }
-  console.log("Lista Cuadricula G1")
-  console.log(listaCuadrante)
+  //console.log("Lista Cuadricula G1")
+  //console.log(listaCuadrante)
   return listaCuadrante
 
 }
@@ -458,19 +458,19 @@ function cuadranteG5(lista){
 
 function convertirMatriz(lista) {
 
-  console.log("La lista que se recibio para convertir la matriz es:")
-  console.log(lista)
+  //console.log("La lista que se recibio para convertir la matriz es:")
+  //console.log(lista)
   const matriz = [];
 
   for (var i = 0; i < 9; i++) {
     
-    console.log(lista.slice(i * 9, (i + 1) * 9))
+    //console.log(lista.slice(i * 9, (i + 1) * 9))
     matriz[i] = lista.slice(i * 9, (i + 1) * 9);
-    console.log(matriz[i])
+    //console.log(matriz[i])
     
   }
-  console.log("Matriz: ")
-  console.log(matriz)
+  //console.log("Matriz: ")
+  //console.log(matriz)
   return matriz;
 }
 
@@ -482,8 +482,8 @@ function convertirLista(matriz){
       lista.push(matriz[i][j]);
     }
   }
-  console.log("Matriz convertida en lista")
-  console.log(lista)
+  //console.log("Matriz convertida en lista")
+  //console.log(lista)
   return lista;
 } 
 
@@ -549,8 +549,8 @@ function resolverSudoku(sudoku) {
   }
 
   // Se encontró una solución válida
-console.log("El sudoku resuelto es:")
-console.log(sudoku)
+//console.log("El sudoku resuelto es:")
+//console.log(sudoku)
   return sudoku;
 }
 
@@ -569,13 +569,13 @@ function generarSudokuAleatorio() {
     }
   }
 
-  console.log(sudoku)
+  //console.log(sudoku)
 
 
   // Resolver el sudoku
   resolverSudoku(sudoku);
-  console.log("Sudoku Aleatorio:")
-  console.log(sudoku)
+  //console.log("Sudoku Aleatorio:")
+  //console.log(sudoku)
   // Devolver el sudoku generado
   return sudoku;
 }
@@ -686,14 +686,14 @@ function setearValores(valores) {
   cuadrados.forEach((cuadrado, indice) => {
     const valor = valores[indice] === 0 ? '' : valores[indice]; // Si el valor es 0, setear un valor vacío
     cuadrado.value = valor;
-    console.log("indice"+indice+" El input:"+valor)
+    //console.log("indice"+indice+" El input:"+valor)
   });
   
 
 }
 */
 function setearValores(valores) {
-  console.log(valores)
+  //console.log(valores)
   const cuadrados = Array.from(contenedor.children).filter(cuadrado => cuadrado.value !== undefined);
 
   cuadrados.forEach((cuadrado, indice) => {

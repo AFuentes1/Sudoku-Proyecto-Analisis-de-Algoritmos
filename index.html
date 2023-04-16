@@ -1,20 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Sudoku Samurai</title>
-    <link rel="stylesheet" href="sudoku.css">
-</head>
-<body>
+    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="Sudoku.css" />
+  </head>
+  <body>
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">Sudoku Samurai</span>
+        <div class="mdl-layout-subtitle">
+          Proyecto Análisis de Algoritmos
+        </div>
+      </div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link mdl-navigation__link--button" href="#">Solucionar</a>
+        <a class="mdl-navigation__link mdl-navigation__link--button" href="#">Volver a Empezar</a>
+        <a class="mdl-navigation__link mdl-navigation__link--button mdl-navigation__link--current" href="#">Dificultad: Facil</a
+        >
+      </nav>
+    </header>
 
-    <button id="Solucionar" class="material-button" onclick="Solucionar()">Solucionar</button>
+      <div id="sudoku" class="tablero" ></div>
+
     
-    <div id = "sudoku" class = "tablero" >
-        
-    </div>
 
+    <footer class="mdl-mini-footer mdl-layout__footer">
+      <div class="mdl-mini-footer__left-section">
+        <div class="mdl-logo">Tecnológico de Costa Rica</div>
+        <ul class="mdl-mini-footer__link-list">
+          <li>
+            <a href="#">Backtracking</a>
+          </li>
+          <li>
+            <a href="#">A*</a>
+          </li>
+        </ul>
+      </div>
+      <div class="mdl-mini-footer__right-section">
+        <ul class="mdl-mini-footer__link-list">
+            <li>Anthony Fuentes</li>
+            <li>Gerson Ramirez</li>
+            <li>Isaac Brenes</li>
+        </ul>
+      </div>
+    </footer>
     <script src="sudoku.js"></script>
-</body>
+  </body>
 </html>
-
-

@@ -324,6 +324,65 @@ function agregarCuadranteG2(listaG2,listanueva2){
 
 }
 
+function agregarCuadranteG3(listaG3,listanueva3){
+  console.log("Lista g3:"+listaG3)
+  var k=0
+  for (let i = 0; i <= listanueva3.length; i++) {
+    if (i >= 132 && i <= 140|| i >= 153 && i <= 161 || i >= 174 && i <= 182 || 
+      i >= 195 && i <= 203 || i >= 216 && i <= 224 || i >= 237 && i <= 245 ||
+      i >= 258 && i <= 266 || i >= 279 && i <= 287 || i >= 300 && i <= 308){
+
+      listanueva3[i]=listaG3[k]
+      k = k+1
+    }
+  }
+
+  console.log("Lista Principal Actualizada 3")
+  console.log(listanueva3)
+  return listanueva3
+
+}
+
+
+function agregarCuadranteG4(listaG4,listanueva4){
+  console.log("Lista g4:"+listaG4)
+  var k=0
+  for (let i = 0; i <= listanueva4.length; i++) {
+    if (i >= 252 && i <= 260 || i >= 273 && i <= 281 || i >= 294 && i <= 302 || 
+      i >= 315 && i <= 323 || i >= 336 && i <= 344 || i >= 357 && i <= 365 ||
+      i >= 378 && i <= 386 || i >= 399 && i <= 407 || i >= 420 && i <= 428){
+
+      listanueva4[i]=listaG4[k]
+      k = k+1
+    }
+  }
+
+  console.log("Lista Principal Actualizada 4")
+  console.log(listanueva4)
+  return listanueva4
+
+}
+
+function agregarCuadranteG5(listaG5,listanueva5){
+  console.log("Lista g5:"+listaG5)
+  var k=0
+  for (let i = 0; i <= listanueva5.length; i++) {
+    if (i >= 264 && i <= 272 || i >= 285 && i <= 293 || i >= 306 && i <= 314 ||
+      i >= 327 && i <= 335 || i >= 348 && i <= 356 || i >= 369 && i <= 377 ||
+      i >= 390 && i <= 398 || i >= 411 && i <= 419 || i >= 432 && i <= 440){
+
+      listanueva5[i]=listaG5[k]
+      k = k+1
+    }
+  }
+
+  console.log("Lista Principal Actualizada 5")
+  console.log(listanueva5)
+  return listanueva5
+
+}
+
+
 function cuadranteG1(lista){
   const listaCuadrante = []
   for (let i = 0; i <= lista.length; i++) {
@@ -532,42 +591,48 @@ function Solucionar(){
   
   const lista = ActualizarLista()
       //console.log("De la lista del tablero se agarró solo los valores de G1")
-      const listaG1 = cuadranteG1(lista)
-      const listaG2 = cuadranteG2(lista)
-      const listaG3 = cuadranteG3(lista)
-      const listaG4 = cuadranteG4(lista)
-      const listaG5 = cuadranteG5(lista)
-      //console.log("Se convirtió en matriz ")
-      const matriz1 = convertirMatriz(listaG1)
-      const matriz2 = convertirMatriz(listaG2)
-      
-      //console.log(resolverSudoku(matriz1));
-      //console.log("Se llama a resolver Sudoku con lo que hay en G1")
-      const sudoku1 = resolverSudoku(matriz1)
-      const sudoku2 = resolverSudoku(matriz2)
-      //console.log("Lo convierte en lista nuevamente")
-      const listasudoku1 = convertirLista(sudoku1)
-      const listasudoku2 = convertirLista(sudoku2)
-      //console.log("Llamamos a la función para setear los valores al tablero")
 
       const listav =eliminarNoNumeros(lista)
+
+      const listaG1 = cuadranteG1(lista)
+      const matriz1 = convertirMatriz(listaG1)
+      const sudoku1 = resolverSudoku(matriz1)
+      const listasudoku1 = convertirLista(sudoku1)
       const listaprincipal = listav.slice();
-      
-      
-      //console.log("Lista verificada"+listav)
-      //console.log("Tamaño"+listav.length)
       const listaconG1= agregarCuadranteG1(listasudoku1,listaprincipal)
+
+      const listaG2 = cuadranteG2(lista)
+      const matriz2 = convertirMatriz(listaG2)
+      const sudoku2 = resolverSudoku(matriz2)
+      const listasudoku2 = convertirLista(sudoku2)
       const listaprincipal2 = listaconG1.slice();
-      console.log("Lista Principal 2")
-      console.log(listaprincipal2)
-      
       const listaconG2 = agregarCuadranteG2(listasudoku2,listaprincipal2)
-      console.log("Lista con G2 ")
-      console.log(listaconG2)
-      console.log("Lista con G1 ")
-      console.log(listaconG1)
-      setearValores(listaconG2)
-      //Solucionar(listav)
+
+      const listaG4 = cuadranteG4(lista)
+      const matriz4 = convertirMatriz(listaG4)
+      const sudoku4 = resolverSudoku(matriz4)
+      const listasudoku4 = convertirLista(sudoku4)
+      const listaprincipal3 = listaconG2.slice()
+      const listaconG4 = agregarCuadranteG4(listasudoku4,listaprincipal3)
+
+      const listaG5 = cuadranteG5(lista)
+      const matriz5 = convertirMatriz(listaG5)
+      const sudoku5 = resolverSudoku(matriz5)
+      const listasudoku5 = convertirLista(sudoku5)
+      const listaprincipal4 = listaconG4.slice()
+      const listaconG5 = agregarCuadranteG5(listasudoku5,listaprincipal4)
+
+      const listaG3 = cuadranteG3(lista)      
+      const matriz3 = convertirMatriz(listaG3)
+      const sudoku3 = resolverSudoku(matriz3)
+      const listasudoku3 = convertirLista(sudoku3)
+      const listaprincipal5 = listaconG5.slice()
+
+      const listaFinal = agregarCuadranteG3(listasudoku3,listaprincipal5)
+
+       
+
+      setearValores(listaFinal)
       //generarSudokuAleatorio()
   
   /*

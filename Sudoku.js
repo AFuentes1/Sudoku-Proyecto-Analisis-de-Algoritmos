@@ -34,32 +34,7 @@ function crearCuadro(input, i, ){
         this.value = '';
       }
       //console.log("Agarró todos los valores del tablero y los convirtio en lista")
-      const lista = ActualizarLista()
-      //console.log("De la lista del tablero se agarró solo los valores de G1")
-      const listaG1 = cuadranteG1(lista)
-      const listaG2 = cuadranteG2(lista)
-      const listaG3 = cuadranteG3(lista)
-      const listaG4 = cuadranteG4(lista)
-      const listaG5 = cuadranteG5(lista)
-      //console.log("Se convirtió en matriz ")
-      const matriz1 = convertirMatriz(listaG1)
       
-      //console.log(resolverSudoku(matriz1));
-      //console.log("Se llama a resolver Sudoku con lo que hay en G1")
-      const sudoku = resolverSudoku(matriz1)
-      //console.log("Lo convierte en lista nuevamente")
-      const listasudoku = convertirLista(sudoku)
-      //console.log("Llamamos a la función para setear los valores al tablero")
-      const listav =eliminarNoNumeros(lista)
-      const listaprincipal = listav.slice();
-      //console.log("Lista verificada"+listav)
-      //console.log("Tamaño"+listav.length)
-      const listaconG1= AgregarcuadranteG1(listasudoku,listaprincipal)
-      console.log("Lista con G1 ")
-      console.log(listaconG1)
-      setearValores(listaconG1)
-      //Solucionar(listav)
-      generarSudokuAleatorio()
    
 
       
@@ -312,7 +287,7 @@ function cuadrante9(lista){
   return listaCuadrante
 }
 
-function AgregarcuadranteG1(listaG1,listanueva){
+function agregarCuadranteG1(listaG1,listanueva){
   console.log("Lista g1:"+listaG1)
   var k=0
   for (let i = 0; i <= listanueva.length; i++) {
@@ -327,6 +302,21 @@ function AgregarcuadranteG1(listaG1,listanueva){
   console.log("Lista Principal Actualizada")
   console.log(listanueva)
   return listanueva
+
+}
+
+function agregarCuadranteG2(listaG2,listanueva2){
+  console.log("Lista g2:"+listaG2)
+  var k=0
+  for (let i = 0; i <= listanueva2.length; i++){
+    (i >= 12 && i <= 20 || i >= 33 && i <= 41 || i >= 54 && i <= 62 || 
+      i >= 75 && i <= 83 || i >= 96 && i <= 104 || i >= 117 && i <= 125 ||
+      i >= 138 && i <= 146 || i >= 159 && i <= 167 || i >= 180 && i <= 188)
+      listanueva2[i]=listaG2[k]
+      k = k+1
+
+  }
+  return listanueva2
 
 }
 
@@ -534,15 +524,43 @@ function generarSudokuAleatorio() {
 
 
 
-function Solucionar(listav){
+function Solucionar(){
   
-  const cuadrados = Array.from(contenedor.children).filter(cuadrado => cuadrado.value !== undefined);
+  const lista = ActualizarLista()
+      //console.log("De la lista del tablero se agarró solo los valores de G1")
+      const listaG1 = cuadranteG1(lista)
+      const listaG2 = cuadranteG2(lista)
+      const listaG3 = cuadranteG3(lista)
+      const listaG4 = cuadranteG4(lista)
+      const listaG5 = cuadranteG5(lista)
+      //console.log("Se convirtió en matriz ")
+      const matriz1 = convertirMatriz(listaG1)
+      const matriz2 = convertirMatriz(listaG2)
+      
+      //console.log(resolverSudoku(matriz1));
+      //console.log("Se llama a resolver Sudoku con lo que hay en G1")
+      const sudoku1 = resolverSudoku(matriz1)
+      const sudoku2 = resolverSudoku(matriz2)
+      //console.log("Lo convierte en lista nuevamente")
+      const listasudoku1 = convertirLista(sudoku1)
+      const listasudoku2 = convertirLista(sudoku2)
+      //console.log("Llamamos a la función para setear los valores al tablero")
 
-  cuadrados.forEach((cuadrado, indice) => {
-    const valor = listav[indice] === 0 ? '' : listav[indice]; // Si el valor es 0, setear un valor vacío
-    cuadrado.value = valor;
-    console.log(valor)
-  });
+      const listav =eliminarNoNumeros(lista)
+      const listaprincipal = listav.slice();
+      
+      
+      //console.log("Lista verificada"+listav)
+      //console.log("Tamaño"+listav.length)
+      const listaconG1= agregarCuadranteG1(listasudoku1,listaprincipal)
+
+      //const listaconG2 = agregarCuadranteG2(listasudoku2,listaprincipal)
+      console.log("Lista con G1 ")
+      console.log(listaconG1)
+      setearValores(listaconG1)
+      //Solucionar(listav)
+      generarSudokuAleatorio()
+  
   /*
   for (let i = 0; i < sudokuAleatorio.length; i++) {
     for (let j = 0; j < sudokuAleatorio[i].length; j++) {
